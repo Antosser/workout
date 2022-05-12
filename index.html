@@ -1,41 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Workkout</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://getbootstrap.com/docs/5.1/dist/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="dist/index.js" defer></script>
-    <script src="easytimer.min.js"></script>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Workkout</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://getbootstrap.com/docs/5.1/dist/css/bootstrap.min.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+    crossorigin="anonymous"></script>
+  <script src="easytimer.min.js"></script>
+  <script src="dist/index.js" defer></script>
 </head>
+
 <body>
-    <main>
-        <h1>
-            Workout
-        </h1>
-        <h2>
-            Streak: <span id="streak"></span>
-        </h2>
-        <hr>
-        <div>
-            <h3>Exercises</h3>
-            <div id="exercises"></div>
-            <div class="btn btn-primary" id="add">Add exercise</div>
-                        
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal-title">Modal title</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-        <hr>
-        <button id="start" class="btn btn-primary">
-            Start today's workout
-        </button>
-        <div>
-            <h3>Execise</h3>
-            <div id="exercise"></div>
-            <h3>Timer</h3>
-            <span id="time"></span>
+        <div class="modal-body" id="modal-text"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close-modal">
+            Ok
+          </button>
         </div>
-    </main>
+      </div>
+    </div>
+  </div>
+  <main class="rounded container">
+    <h1>Workout</h1>
+    <hr />
+    <div class="mx-auto rounded bg-light p-2 text-center h3 border border-secondary" style="max-width: 500px;">
+      Streak:
+      <small>
+        <span id="streak"></span>
+      </small>
+      <div>
+        <button id="start" class="btn btn-primary mt-2">Start today's workout</button>
+      </div>
+    </div>
+    <hr />
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Exercise</th>
+            <th>Duration (in minutes)</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody id="exercises-table">
+          <tr>
+            <td>
+              <input type="text" class="form-control" placeholder="Exercise name" />
+            </td>
+            <td>
+              <input type="number" class="form-control" placeholder="Duration" />
+            </td>
+            <td>
+              <button class="btn btn-danger" id="delete-exercise">
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="btn btn-success" style="margin-left: 8px" id="add">Add exercise</div>
+    </div>
+    <hr />
+    <!-- <div>
+      <h3>Execise</h3>
+      <div id="exercise"></div>
+      <h3>Timer</h3>
+      <span id="time"></span>
+    </div> -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="showModal"
+      hidden>
+      Launch demo modal
+    </button>
+  </main>
+  <footer>
+    <p class="text-center text-muted">
+      &copy Code licensed under
+      <a href="https://github.com/Antosser/workout/blob/main/LICENSE">MIT</a>
+    </p>
+  </footer>
 </body>
+
 </html>
