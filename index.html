@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workkout</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://getbootstrap.com/docs/5.1/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="dist/index.js" defer></script>
+    <script src="easytimer.min.js"></script>
+</head>
+<body>
+    <main>
+        <h1>
+            Workout
+        </h1>
+        <h2>
+            Streak: <span id="streak"></span>
+        </h2>
+        <hr>
+        <div>
+            <h3>Exercises</h3>
+            <div id="exercises"></div>
+            <div class="btn btn-primary" id="add">Add exercise</div>
+                        
+        </div>
+        <hr>
+        <button id="start" class="btn btn-primary">
+            Start today's workout
+        </button>
+        <div>
+            <h3>Execise</h3>
+            <div id="exercise"></div>
+            <h3>Timer</h3>
+            <span id="time"></span>
+        </div>
+    </main>
+</body>
+</html>
