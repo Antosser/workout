@@ -49,7 +49,7 @@ function renderExercises() {
         let tr = $('<tr>');
 
         tr.append($(`<td><input type="text" class="form-control" placeholder="Exercise name" value="${exercise.name}"></td>`));
-        tr.append($(`<td><input type="text" class="form-control" placeholder="Exercise name" value="${exercise.duration}"></td>`));
+        tr.append($(`<td><input type="text" class="form-control" placeholder="Exercise duration" value="${exercise.duration}"></td>`));
 
         let deletebutton = $(`<button class="btn btn-danger" id="delete-exercise">Delete</button>`);
         deletebutton.on('click', element => {
@@ -207,7 +207,7 @@ function deleteExercise(uuid: string) {
         }
     }
     else {
-        $('#modal-title').text('Deletion error');
+        $('#modal-title').text('');
         $('#modal-text').text('You must have at least one exercise');
         $('#showModal').trigger('click');
     }
