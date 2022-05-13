@@ -1,5 +1,7 @@
 'use strict';
 
+import { Button } from "bootstrap";
+
 var exercises: Exercise[] = [];
 var streak = 0;
 var lastExeciseDate = new Date('1/1/2000');
@@ -18,6 +20,28 @@ function genUuid(): string {
     });
 }
 
+function moveUp(uuid: string) {
+    let index = exercises.findIndex(exercise => exercise.uuid === uuid);
+    if (index > 0) {
+        let temp = exercises[index - 1];
+        exercises[index - 1] = exercises[index];
+        exercises[index] = temp;
+        localStorage.setItem('ww-exercises', JSON.stringify(exercises));
+        renderExercises();
+    }   
+}
+
+function moveDown(uuid: string) {
+    let index = exercises.findIndex(exercise => exercise.uuid === uuid);
+    if (index < exercises.length - 1) {
+        let temp = exercises[index + 1];
+        exercises[index + 1] = exercises[index];
+        exercises[index] = temp;
+        localStorage.setItem('ww-exercises', JSON.stringify(exercises));
+        renderExercises();
+    }
+}
+
 function renderExercises() {
     $('#exercises-table').empty();
     for (let i = 0; i < exercises.length; i++) {
@@ -27,11 +51,39 @@ function renderExercises() {
         tr.append($(`<td><input type="text" class="form-control" placeholder="Exercise name" value="${exercise.name}"></td>`));
         tr.append($(`<td><input type="text" class="form-control" placeholder="Exercise name" value="${exercise.duration}"></td>`));
 
-        let deletebutton = $(`<td><button class="btn btn-danger" id="delete-exercise">Delete</button></td>`);
+        let deletebutton = $(`<button class="btn btn-danger" id="delete-exercise">Delete</button>`);
         deletebutton.on('click', element => {
             deleteExercise(exercise.uuid);
         });
-        tr.append(deletebutton);
+
+        let butttons = $('<td><div></div></td>');
+        butttons.find('div').append(deletebutton);
+        
+        butttons.find('div').append(`
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-arrow-down-fill" viewBox="0 0 16 16">
+        <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM8 5a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 9.293V5.5A.5.5 0 0 1 8 5z"/>
+        </svg>
+        `);
+        butttons.find('div').append(`
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-arrow-up-fill" viewBox="0 0 16 16">
+        <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM7.5 6.707 6.354 7.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 6.707V10.5a.5.5 0 0 1-1 0V6.707z"/>
+        </svg>
+        `);
+
+        // Set the scale of the svgs to 1
+        butttons.find('svg').attr('height', '36px');
+        butttons.find('svg').attr('width', '36px');
+        butttons.find('svg').attr('cursor', 'pointer');
+        butttons.find('div').css('display', 'flex');
+
+        butttons.find('svg').eq(1).on('click', element => {
+            moveUp(exercise.uuid);
+        });
+        butttons.find('svg').eq(0).on('click', element => {
+            moveDown(exercise.uuid);
+        });
+
+        tr.append(butttons);
 
         tr.attr('data-uuid', exercise.uuid);
 
@@ -136,24 +188,13 @@ $('#add').on('click', () => {
     let tr = $('<tr>');
     let uuid = genUuid();
 
-    tr.append($(`<td><input type="text" class="form-control" placeholder="Exercise name"></td>`));
-    tr.append($(`<td><input type="text" class="form-control" placeholder="Exercise name"></td>`));
-
-    let deletebutton = $(`<td><button class="btn btn-danger" id="delete-exercise">Delete</button></td>`);
-    deletebutton.on('click', element => {
-        deleteExercise(uuid);
-    }); 
-    tr.append(deletebutton);
-
-    tr.attr('data-uuid', uuid);
-
-    $('#exercises-table').append(tr);
-
     exercises.push({
         name: '',
         duration: '',
         uuid: uuid
     });
+
+    renderExercises();
 });
 
 function deleteExercise(uuid: string) {
