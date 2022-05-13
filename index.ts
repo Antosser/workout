@@ -246,11 +246,9 @@ setInterval(() => {
         let name: string = tr.find('input').eq(0).val();
         let duration: string = tr.find('input').eq(1).val();
 
-        if (name !== '' && duration !== '') {
-            if (index > -1) {
-                exercises[index].name = name;
-                exercises[index].duration = duration;
-            }
+        if (index > -1) {
+            exercises[index].name = name;
+            exercises[index].duration = duration;
         }
         localStorage.setItem('ww-exercises', JSON.stringify(exercises));
     });

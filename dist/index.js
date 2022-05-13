@@ -204,11 +204,9 @@ setInterval(() => {
         let uuid = tr.attr('data-uuid');
         let name = tr.find('input').eq(0).val();
         let duration = tr.find('input').eq(1).val();
-        if (name !== '' && duration !== '') {
-            if (index > -1) {
-                exercises[index].name = name;
-                exercises[index].duration = duration;
-            }
+        if (index > -1) {
+            exercises[index].name = name;
+            exercises[index].duration = duration;
         }
         localStorage.setItem('ww-exercises', JSON.stringify(exercises));
     });
