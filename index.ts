@@ -120,12 +120,6 @@ exercises = JSON.parse(localStorage.getItem('ww-exercises'));
 localStorage.setItem('ww-lastExeciseDate', localStorage.getItem('ww-lastExeciseDate') || '1/1/2000');
 lastExeciseDate = new Date(localStorage.getItem('ww-lastExeciseDate') || lastExeciseDate.toString());
 
-// If last exercise was earlier than yesterday reset streak
-if (lastExeciseDate.getDate() < new Date().getDate() - 1) {
-    streak = 0;
-    updateStreak();
-}
-
 if (exercises.length === 0) {
     let uuid = genUuid();
     exercises.push({
@@ -219,4 +213,10 @@ setInterval(() => {
         }
         localStorage.setItem('ww-exercises', JSON.stringify(exercises));
     });
+
+    // If last exercise was earlier than yesterday reset streak
+    if (lastExeciseDate.getDate() < new Date().getDate() - 1) {
+        streak = 0;
+        updateStreak();
+    }
 }, 100);
