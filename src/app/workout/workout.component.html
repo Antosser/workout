@@ -1,0 +1,17 @@
+<h1>
+	Workout
+</h1>
+<div class="mx-auto rounded bg-light p-2 text-center h3 border border-secondary">
+	<button class="btn btn-primary m-2" (click)="initTimer()">Start</button>
+	<div class="progress">
+		<div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" [style.width]="time / maxTime * 100 + '%'"></div>
+	</div>
+	<h2>
+		Exercise:
+		<small class="font">
+			<strong>
+				{{data.exercises[currentExerciseIndex].name}}
+			</strong>
+		</small>
+	</h2>
+</div>
