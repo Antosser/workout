@@ -1,27 +1,28 @@
 # WorkoutAngular
+A much better looking and working workout app than the old one
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.6.
+## Includes
+* Streaks
+* Adding removing exercises
+* Moving them up and down
+* A fancy timer / progress bar
+* Good bootstrap design
 
-## Development server
+## Installation
+* Download angular
+* Navigate into the project's directory
+* Run `ng serve` and open http://localhost:4200 in your browser
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+I do not host any servers, so this is the only way to use this app
 
-## Code scaffolding
+## Usage
+* Add some exercises using the `Add another exercise` button and change their names and durations
+* You can delete or move the exercises using the buttons on the right
+* To start exercising click the `Start today's workout` button on the top
+* This will take you to another page. You'll need to click the `Staqrt` button there too
+* Do the exercise while the time is running out
+* Once you're done with all of them your streak will increase by 1
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Streak system
+* Streak is reset if the last time you exercised was before yesterday
+* Streak is increased by 1 if you finished exercising and you did not exercise that day
