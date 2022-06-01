@@ -2,7 +2,9 @@
 	Workout
 </h1>
 <div class="mx-auto rounded bg-light p-2 text-center h3 border border-secondary">
-	<button class="btn btn-primary m-2" (click)="initTimer()">Start</button>
+	<button class="btn btn-primary m-2" (click)="paused = !paused">
+		{{paused ? 'Resume' : 'Pause'}}
+	</button>
 	<div class="progress">
 		<div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" [style.width]="time / maxTime * 100 + '%'"></div>
 	</div>

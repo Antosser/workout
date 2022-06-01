@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
+import { Router } from '@angular/router';
 
 interface Exercise {
   name: string;
@@ -18,6 +19,7 @@ export class WorkoutComponent implements OnInit {
   maxTime: number = 20;
   workoutRunning = false;
   currentExerciseIndex: number = 0;
+  paused = false;
 
   checkValidExercises() {
     // Return false if any exercises durarion is 0
@@ -39,16 +41,17 @@ export class WorkoutComponent implements OnInit {
   }
 
   update() {
-    this.time -= step;
-    if (this.time <= 0) {
-      if (this.currentExerciseIndex + 1 >= this.data.exercises.length) {
-        this.endWorkout();
-        return;
+    if (!this.paused) {
+      this.time -= step;
+      if (this.time <= 0) {
+        if (this.currentExerciseIndex + 1 >= this.data.exercises.length) {
+          this.endWorkout();
+          return;
+        }
+        this.currentExerciseIndex++;
+        this.time = this.maxTime = this.data.exercises[this.currentExerciseIndex].duration;
       }
-      this.currentExerciseIndex++;
-      this.time = this.maxTime = this.data.exercises[this.currentExerciseIndex].duration;
     }
-
     setTimeout(() => {
       this.update();
     }, step * 1000);
@@ -57,13 +60,15 @@ export class WorkoutComponent implements OnInit {
   endWorkout() {
     this.workoutRunning = false;
     this.data.addStreak();
+    this.router.navigate(['/']);
   }
 
-  constructor(public data: DataService) {
+  constructor(public data: DataService, private router: Router) {
     
   }
 
   ngOnInit(): void {
+    this.initTimer();
   }
 
 }

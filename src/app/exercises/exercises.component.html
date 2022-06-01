@@ -28,7 +28,7 @@
 					<input type="number" class="form-control" placeholder="Duration" [(ngModel)]="item.duration">
 				</td>
 				<td>
-					<button class="btn btn-danger" [disabled]="(data.exercises.length == 1)" (click)="data.exercises.splice(i, 1)">
+					<button class="btn btn-danger" (click)="data.exercises.length > 1 ? data.exercises.splice(i, 1) : data.reset()">
 						Delete
 					</button>
 					<div style="display: inline-block;">

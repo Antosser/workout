@@ -38,6 +38,10 @@ export class DataService {
     return false;
   }
 
+  reset() {
+    this.exercises = [{ name: 'Exercise', duration: 30 }];
+  }
+
   constructor() {
     // Local Storage
     this.streak = parseInt(localStorage.getItem('streak') as string) || 0;
@@ -45,7 +49,7 @@ export class DataService {
     this.lastExerciseDate = new Date(localStorage.getItem('lastExerciseDate') as string) || new Date('01/01/1970');
 
     if (this.exercises.length === 0) {
-      this.exercises.push({name: 'Exercise', duration: 30});
+      this.reset();
     }
 
     setInterval(() => {
