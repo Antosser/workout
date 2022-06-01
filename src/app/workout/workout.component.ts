@@ -7,7 +7,7 @@ interface Exercise {
   duration: number;
 }
 
-const step = .05;
+const step = .5;
 
 @Component({
   selector: 'app-workout',

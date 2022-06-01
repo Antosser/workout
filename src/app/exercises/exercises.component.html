@@ -16,7 +16,7 @@
 			<tr>
 				<th>Exercise</th>
 				<th>Duration (in seconds)</th>
-				<th>Delete</th>
+				<th>Delete / Move</th>
 			</tr>
 		</thead>
 		<tbody id="exercises-table">
@@ -44,7 +44,7 @@
 			</tr>
 		</tbody>
 	</table>
-	<div class="btn btn-success" style="margin-left: 8px" (click)="data.exercises.push({name: 'Exercise', duration: 30})">
+	<div class="btn btn-success" style="margin-left: 8px" (click)="data.exercises.push(data.DEFAULT_EXERCISE)">
 		Add another exercise
 	</div>
 </div>

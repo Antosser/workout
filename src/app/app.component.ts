@@ -30,18 +30,6 @@ export class AppComponent {
   }
 
   constructor() {
-    // Local Storage
-    this.streak = parseInt(localStorage.getItem('streak') as string) || 0;
-    this.exercises = JSON.parse(localStorage.getItem('exercises') as string) || [{ name: 'Exercise', duration: 30 }];
-
-    if (this.exercises.length === 0) {
-      this.exercises.push({name: 'Exercise', duration: 30});
-    }
-
-    setInterval(() => {
-      localStorage.setItem('streak', this.streak.toString());
-      localStorage.setItem('exercises', JSON.stringify(this.exercises));
-    }
-    , 10);
+    
   }
 }

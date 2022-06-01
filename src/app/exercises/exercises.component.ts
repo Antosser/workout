@@ -12,6 +12,8 @@ export class ExercisesComponent implements OnInit {
 
   }
 
+  window = window;
+
   ngOnInit(): void {
   }
 }
