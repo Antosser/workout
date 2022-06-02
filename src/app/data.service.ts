@@ -9,7 +9,6 @@ interface Exercise {
   providedIn: 'root'
 })
 export class DataService {
-  DEFAULT_EXERCISE: Exercise = { name: '', duration: 30 };
 
   lastExerciseDate: Date;
   streak = 0;
@@ -47,7 +46,7 @@ export class DataService {
   }
 
   reset() {
-    this.exercises = [this.DEFAULT_EXERCISE];
+    this.exercises = [{ name: '', duration: 30 }];
     this.save();
   }
 
@@ -65,7 +64,7 @@ export class DataService {
   constructor() {
     // Local Storage
     this.streak = parseInt(localStorage.getItem('streak') as string) || 0;
-    this.exercises = JSON.parse(localStorage.getItem('exercises') as string) || [this.DEFAULT_EXERCISE];
+    this.exercises = JSON.parse(localStorage.getItem('exercises') as string) || [{name: '', duration: 30 }];
     this.lastExerciseDate = new Date(localStorage.getItem('lastExerciseDate') as string) || new Date('01/01/1970');
 
     this.save();
