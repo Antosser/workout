@@ -60,7 +60,9 @@ export class WorkoutComponent implements OnInit {
   endWorkout() {
     this.workoutRunning = false;
     this.data.addStreak();
-    this.router.navigate(['/']);
+    setTimeout(() => {
+      this.router.navigate(['/']);
+    }, 500);
   }
 
   constructor(public data: DataService, private router: Router) {
