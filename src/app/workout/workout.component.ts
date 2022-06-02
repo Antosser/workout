@@ -18,8 +18,8 @@ export class WorkoutComponent implements OnInit {
   time: number = 20;
   maxTime: number = 20;
   workoutRunning = false;
-  currentExerciseIndex: number = 0;
   paused = false;
+  currentExerciseIndex: number = 0;
 
   checkValidExercises() {
     // Return false if any exercises durarion is 0
