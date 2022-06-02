@@ -7,7 +7,7 @@ interface Exercise {
   duration: number;
 }
 
-const step = .5;
+const STEP = .5;
 
 @Component({
   selector: 'app-workout',
@@ -37,12 +37,12 @@ export class WorkoutComponent implements OnInit {
     this.workoutRunning = true;
     setTimeout(() => {
       this.update();
-    }, step * 1000);
+    }, STEP * 1000);
   }
 
   update() {
     if (!this.paused) {
-      this.time -= step;
+      this.time -= STEP;
       if (this.time <= 0) {
         if (this.currentExerciseIndex + 1 >= this.data.exercises.length) {
           this.endWorkout();
@@ -54,7 +54,7 @@ export class WorkoutComponent implements OnInit {
     }
     setTimeout(() => {
       this.update();
-    }, step * 1000);
+    }, STEP * 1000);
   }
 
   endWorkout() {
