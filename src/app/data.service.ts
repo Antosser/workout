@@ -14,6 +14,24 @@ export class DataService {
   streak = 0;
   exercises: Exercise[] = [];
 
+  constructor() {
+    // Local Storage
+    this.streak = parseInt(localStorage.getItem('streak') as string) || 0;
+    this.exercises = JSON.parse(localStorage.getItem('exercises') as string) || [{name: '', duration: 30 }];
+    this.lastExerciseDate = new Date(localStorage.getItem('lastExerciseDate') as string) || new Date('01/01/1970');
+
+    this.save();
+
+    if (this.exercises.length === 0) {
+      this.reset();
+    }
+
+    setInterval(() => {
+      this.save();
+    }
+    , 10);
+  }
+
   getDays(date: Date) {
     return Math.floor(date.getTime() / (1000 * 60 * 60 * 24) + date.getTimezoneOffset() / 24);
   }
@@ -61,21 +79,4 @@ export class DataService {
     }
   }
 
-  constructor() {
-    // Local Storage
-    this.streak = parseInt(localStorage.getItem('streak') as string) || 0;
-    this.exercises = JSON.parse(localStorage.getItem('exercises') as string) || [{name: '', duration: 30 }];
-    this.lastExerciseDate = new Date(localStorage.getItem('lastExerciseDate') as string) || new Date('01/01/1970');
-
-    this.save();
-
-    if (this.exercises.length === 0) {
-      this.reset();
-    }
-
-    setInterval(() => {
-      this.save();
-    }
-    , 10);
-  }
 }

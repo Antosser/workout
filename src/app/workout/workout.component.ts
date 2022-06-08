@@ -21,6 +21,14 @@ export class WorkoutComponent implements OnInit {
   paused = false;
   currentExerciseIndex: number = 0;
 
+  constructor(public data: DataService, private router: Router) {
+
+  }
+
+  ngOnInit(): void {
+    this.initTimer();
+  }
+
   checkValidExercises() {
     // Return false if any exercises durarion is 0
     return this.data.exercises.every(exercise => exercise.duration > 0)
@@ -65,12 +73,5 @@ export class WorkoutComponent implements OnInit {
     }, 500);
   }
 
-  constructor(public data: DataService, private router: Router) {
-    
-  }
-
-  ngOnInit(): void {
-    this.initTimer();
-  }
 
 }

@@ -9,10 +9,7 @@ import { DataService } from '../data.service';
 export class ExercisesComponent implements OnInit {
 
   constructor(public data: DataService) {
-
   }
-
-  window = window;
 
   ngOnInit(): void {
   }
