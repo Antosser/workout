@@ -1,1 +1,10 @@
-{}
+{
+  "hosting": {
+    "public": "dist/workout-angular",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
