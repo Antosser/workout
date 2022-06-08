@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../data.service';
+import { DataService } from '../../services/exercises.service';
 
 @Component({
   selector: 'app-workout',
