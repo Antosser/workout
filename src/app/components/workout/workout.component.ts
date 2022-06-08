@@ -11,8 +11,7 @@ const STEP = .5;
 
 @Component({
   selector: 'app-workout',
-  templateUrl: './workout.component.html',
-  styleUrls: ['./workout.component.css']
+  templateUrl: './workout.component.html'
 })
 export class WorkoutComponent implements OnInit {
   time: number = 20;
