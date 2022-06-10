@@ -17,7 +17,7 @@ export class DataService {
   constructor() {
     // Local Storage
     this.streak = parseInt(localStorage.getItem('streak') as string) || 0;
-    this.exercises = JSON.parse(localStorage.getItem('exercises') as string) || [{name: '', duration: 30 }];
+    this.exercises = JSON.parse(localStorage.getItem('exercises') as string) || [this.getBlankExercise()];
     this.lastExerciseDate = new Date(localStorage.getItem('lastExerciseDate') as string) || new Date('01/01/1970');
 
     this.save();
@@ -32,6 +32,18 @@ export class DataService {
     , 10);
   }
 
+  getBlankExercise() {
+    return { name: 'Exercise', duration: 30 };
+  }
+
+  addExercise(name: string, duration: number) {
+    this.exercises.push({ name, duration });
+  }
+
+  addBlankExercise() {
+    this.exercises.push(this.getBlankExercise());
+  }
+
   getDays(date: Date) {
     return Math.floor(date.getTime() / (1000 * 60 * 60 * 24) + date.getTimezoneOffset() / 24);
   }
@@ -44,12 +56,10 @@ export class DataService {
 
   moveUp(index: number) {
     this.arrayMove(this.exercises, index, index - 1);
-    this.save();
   }
 
   moveDown(index: number) {
     this.arrayMove(this.exercises, index, index + 1);
-    this.save();
   }
 
   addStreak() {
@@ -57,15 +67,13 @@ export class DataService {
     if (this.getDays(this.lastExerciseDate) !== this.getDays(new Date())) {
       this.streak++;
       this.lastExerciseDate = new Date();
-      this.save();
       return true;
     }
     return false;
   }
 
   reset() {
-    this.exercises = [{ name: '', duration: 30 }];
-    this.save();
+    this.exercises = [this.getBlankExercise()];
   }
 
   save() {
@@ -79,4 +87,12 @@ export class DataService {
     }
   }
 
+  deleteExercise(index: number) {
+    if (this.exercises.length > 1) {
+      this.exercises.splice(index, 1);
+    }
+    else {
+      this.reset();
+    }
+  }
 }
