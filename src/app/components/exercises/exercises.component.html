@@ -31,11 +31,11 @@
           </button>
           <div style="display: inline-block;">
             <button class="btn btn-secondary" ngClass="updown" [disabled]="i == 0" (click)="data.moveUp(i)"
-              name="Move up">
+              aria-label="Move up">
               <i class="fa fa-caret-up"></i>
             </button>
             <button class="btn btn-secondary" ngClass="updown" [disabled]="i == data.exercises.length - 1"
-              name="Move down" (click)="data.moveDown(i)">
+              aria-label="Move down" (click)="data.moveDown(i)">
               <i class="fa fa-caret-down"></i>
             </button>
           </div>
