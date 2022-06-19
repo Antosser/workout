@@ -8,7 +8,7 @@ interface Exercise {
 @Injectable({
   providedIn: 'root'
 })
-export class DataService {
+export class ExerciseService {
 
   lastExerciseDate: Date;
   streak = 0;
@@ -94,5 +94,12 @@ export class DataService {
     else {
       this.reset();
     }
+  }
+
+  getExerciseName(index: number) {
+    if (index < this.exercises.length) {
+      return this.exercises[index].name;
+    }
+    return 'None';
   }
 }

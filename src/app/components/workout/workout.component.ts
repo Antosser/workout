@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../../services/exercises.service';
+import { ExerciseService } from '../../services/exercises.service';
 import { Router } from '@angular/router';
 
 interface Exercise {
@@ -20,7 +20,7 @@ export class WorkoutComponent implements OnInit {
   paused = false;
   currentExerciseIndex: number = 0;
 
-  constructor(public data: DataService, private router: Router) {
+  constructor(public ExerciseService: ExerciseService, private router: Router) {
 
   }
 
@@ -30,8 +30,8 @@ export class WorkoutComponent implements OnInit {
 
   checkValidExercises() {
     // Return false if any exercises durarion is 0
-    return this.data.exercises.every(exercise => exercise.duration > 0)
-    && this.data.exercises.length > 0;
+    return this.ExerciseService.exercises.every(exercise => exercise.duration > 0)
+    && this.ExerciseService.exercises.length > 0;
   }
 
   initTimer() {
@@ -39,7 +39,7 @@ export class WorkoutComponent implements OnInit {
     if (!this.checkValidExercises()) return;
 
     this.currentExerciseIndex = 0;
-    this.time = this.maxTime = this.data.exercises[0].duration;
+    this.time = this.maxTime = this.ExerciseService.exercises[0].duration;
 
     this.workoutRunning = true;
     setTimeout(() => {
@@ -51,12 +51,12 @@ export class WorkoutComponent implements OnInit {
     if (!this.paused) {
       this.time -= STEP;
       if (this.time <= 0) {
-        if (this.currentExerciseIndex + 1 >= this.data.exercises.length) {
+        if (this.currentExerciseIndex + 1 >= this.ExerciseService.exercises.length) {
           this.endWorkout();
           return;
         }
         this.currentExerciseIndex++;
-        this.time = this.maxTime = this.data.exercises[this.currentExerciseIndex].duration;
+        this.time = this.maxTime = this.ExerciseService.exercises[this.currentExerciseIndex].duration;
       }
     }
     setTimeout(() => {
@@ -64,9 +64,23 @@ export class WorkoutComponent implements OnInit {
     }, STEP * 1000);
   }
 
+  skip() {
+    this.time = STEP;
+  }
+
+  addToTime(seconds: number) {
+    this.time += seconds;
+    if (this.time > this.maxTime) {
+      this.time = this.maxTime;
+    }
+    if (this.time < STEP) {
+      this.time = STEP;
+    }
+  }
+
   endWorkout() {
     this.workoutRunning = false;
-    this.data.addStreak();
+    this.ExerciseService.addStreak();
     setTimeout(() => {
       this.router.navigate(['/']);
     }, 500);

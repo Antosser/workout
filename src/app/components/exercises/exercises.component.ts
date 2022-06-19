@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../../services/exercises.service';
+import { ExerciseService } from '../../services/exercises.service';
 
 @Component({
   selector: 'app-workout',
@@ -8,7 +8,7 @@ import { DataService } from '../../services/exercises.service';
 })
 export class ExercisesComponent implements OnInit {
 
-  constructor(public data: DataService) {
+  constructor(public data: ExerciseService) {
   }
 
   ngOnInit(): void {
