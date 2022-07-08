@@ -1,3 +1,11 @@
 .updown {
     margin-left: 3px;
 }
+
+.loginform {
+  text-align: center;
+}
+
+.loginform > span > button {
+  margin: 5px;
+}

@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "workout-f1f50"
+  },
+  "targets": {
+    "workout-f1f50": {
+      "hosting": {
+        "workout-angular": [
+          "workout-f1f50"
+        ]
+      }
+    }
   }
 }

@@ -46,4 +46,17 @@
   <div class="btn btn-success" style="margin-left: 8px" (click)="data.addBlankExercise()">
     Add exercise
   </div>
+
+  <hr>
+  <div class="loginform">
+    <span *ngIf="auth.user$ | async as user; else login">
+      <button class="btn btn-primary" (click)="auth.uploadData()">Save to database</button>
+      <button class="btn btn-secondary" (click)="auth.downloadData()">Load from database</button>
+      <button class="btn btn-danger" (click)="auth.signOut()">Sign Out</button>
+    </span>
+
+    <ng-template #login>
+      <button class="btn btn-primary" (click)="auth.googleSignin()">Login with Google</button>
+    </ng-template>
+  </div>
 </div>

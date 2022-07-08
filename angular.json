@@ -99,6 +99,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "workout-angular:build:production",
+            "firebaseProject": "workout-f1f50",
+            "firebaseHostingSite": "workout-f1f50"
+          }
         }
       }
     }
