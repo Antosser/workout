@@ -46,6 +46,3 @@ Thumbs.db
 
 # Firebase
 .firebase/
-
-# Environments
-src/environments

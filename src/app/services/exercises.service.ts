@@ -6,9 +6,7 @@ interface Exercise {
   duration: number;
 }
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class ExerciseService {
 
   public lastExerciseDate: Date;
