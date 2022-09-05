@@ -13,7 +13,9 @@ A much better looking and working workout app than the old one
 * Navigate into the project's directory
 * Run `ng serve` and open http://localhost:4200 in your browser
 
-I do not host any servers, so this is the only way to use this app
+--- OR ---
+
+Go to https://workout.antosser.com
 
 ## Usage
 * Add some exercises using the `Add another exercise` button and change their names and durations
