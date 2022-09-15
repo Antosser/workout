@@ -1,3 +1,25 @@
 .updown {
-    margin-left: 3px;
+  margin: 1px;
+}
+
+.loginform {
+  text-align: center;
+}
+
+.loginform > span > button {
+  margin: 5px;
+}
+
+.that-button {
+  margin: 3px;
+}
+
+.inputs {
+  vertical-align: middle;
+}
+
+.add-excercise {
+  margin: 0 auto;
+  display: block;
+  max-width: fit-content;
 }

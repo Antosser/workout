@@ -1,0 +1,24 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    match /users/{userId} {
+    	allow update: if isOwner(userId) &&
+      request.resource.data.uid == request.auth.uid &&
+      request.resource.data.email == request.email &&
+      request.resource.data.exercises is string &&
+      request.resource.data.lastExerciseDate is string &&
+      request.resource.data.streak is int;
+
+
+      allow read: if isOwner(userId);
+    }
+
+    function isOwner(userId) {
+    	return request.auth.uid == userId;
+    }
+  }
+}

@@ -1,3 +1,4 @@
+import { AuthService } from './auth.service';
 import { Injectable } from '@angular/core';
 
 interface Exercise {
@@ -5,14 +6,12 @@ interface Exercise {
   duration: number;
 }
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class ExerciseService {
 
-  lastExerciseDate: Date;
-  streak = 0;
-  exercises: Exercise[] = [];
+  public lastExerciseDate: Date;
+  public streak = 0;
+  public exercises: Exercise[] = [];
 
   constructor() {
     // Local Storage

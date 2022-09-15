@@ -2,17 +2,18 @@
 	<button class="btn btn-primary m-2" (click)="paused = !paused">
 		{{paused ? 'Resume' : 'Pause'}}
 	</button>
-  <button class="btn btn-danger m-2" (click)="skip()">
+	<button class="btn btn-danger m-2" (click)="skip()">
 		Skip
 	</button>
 	<div class="progress">
-		<div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" [style.width]="time / maxTime * 100 + '%'"></div>
+		<div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar"
+			[style.width]="time / maxTime * 100 + '%'"></div>
 	</div>
-  <button class="btn btn-secondary m-2" (click)="addToTime(10)">
-		+10 seconds
-	</button>
-  <button class="btn btn-secondary m-2" (click)="addToTime(-10)">
+	<button class="btn btn-secondary m-2" (click)="addToTime(-10)">
 		-10 seconds
+	</button>
+	<button class="btn btn-secondary m-2" (click)="addToTime(10)">
+		+10 seconds
 	</button>
 	<h2>
 		Exercise:
@@ -22,7 +23,7 @@
 			</strong>
 		</small>
 
-    Next:
+		Next:
 		<small class="font">
 			<strong>
 				{{ExerciseService.getExerciseName(currentExerciseIndex + 1)}}
