@@ -15,7 +15,7 @@ A much better looking and working workout app than the old one
 
 --- OR ---
 
-Go to https://workout.antosser.com
+Go to https://workout.antosser.xyz
 
 ## Usage
 * Add some exercises using the `Add another exercise` button and change their names and durations
