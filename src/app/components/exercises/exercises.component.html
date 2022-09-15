@@ -18,7 +18,7 @@
       </tr>
     </thead>
     <tbody id="exercises-table">
-      <tr *ngFor="let item of data.exercises; let i = index">
+      <tr *ngFor="let item of data.exercises; let i = index" class="inputs">
         <td>
           <input type="text" class="form-control" placeholder="Exercise name" [(ngModel)]="item.name">
         </td>
@@ -26,10 +26,10 @@
           <input type="number" class="form-control" placeholder="Duration" [(ngModel)]="item.duration">
         </td>
         <td>
-          <button class="btn btn-danger" (click)="data.deleteExercise(i)">
+          <button class="btn btn-danger that-button" (click)="data.deleteExercise(i)">
             Delete
           </button>
-          <div style="display: inline-block;">
+          <div style="display: inline-block;" class="that-button">
             <button class="btn btn-secondary" ngClass="updown" [disabled]="i == 0" (click)="data.moveUp(i)"
               aria-label="Move up">
               <i class="fa fa-caret-up"></i>
@@ -43,7 +43,7 @@
       </tr>
     </tbody>
   </table>
-  <div class="btn btn-success" style="margin-left: 8px" (click)="data.addBlankExercise()">
+  <div class="btn btn-success add-excercise" (click)="data.addBlankExercise()">
     Add exercise
   </div>
 
