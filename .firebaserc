@@ -5,7 +5,7 @@
   "targets": {
     "workout-f1f50": {
       "hosting": {
-        "workout-angular": [
+        "workout": [
           "workout-f1f50"
         ]
       }
