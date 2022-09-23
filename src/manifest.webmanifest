@@ -3,6 +3,7 @@
   "version": "2.0",
   "theme_color": "#edb02b",
   "background_color": "#fafafa",
+  "orientation": "portrait-primary",
   "default_locale": "en",
   "display": "standalone",
   "scope": "./",
